@@ -2,6 +2,9 @@
 
 public class BulletScript : MonoBehaviour
 {
+
+    [SerializeField]
+    private float speed = 5f;
     private GameObject target;
     [SerializeField]
     private float speed = 5f;
