@@ -179,4 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTarget: {fileID: 0}
+  maxHealth: 50
+  currentHealth: 0
   speed: 2
