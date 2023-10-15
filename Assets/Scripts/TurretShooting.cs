@@ -7,7 +7,7 @@ public class TurretShooting : MonoBehaviour
     [SerializeField]
     private int attackDamage = 50;
     [SerializeField]
-    private float attackRange = 20f;
+    private float attackRange = 30f;
     [SerializeField]
     private float attackCooldown = 1f;
     private float currentCooldown = 0f;
@@ -45,5 +45,11 @@ public class TurretShooting : MonoBehaviour
         {
             currentCooldown -= Time.deltaTime;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

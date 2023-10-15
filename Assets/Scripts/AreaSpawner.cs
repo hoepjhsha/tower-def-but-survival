@@ -1,37 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class AreaSpawner : MonoBehaviour
 {
-    public Collider[] spawnAreas;
+    public Collider collider;
     public GameObject eminemPrefab;
 
     [SerializeField]
-    private int maxEminem = 10;
+    private int maxEminem = 20;
     [SerializeField]
     private float spawnInterval = 3f;
     [SerializeField]
-    private float timeEachWave = 20f;
-    [SerializeField]
-    private int numberWaveSpawned = 0;
+    private float waveCooldown = 15f;
 
     [SerializeField]
-    private float currentSpawnInterval;
+    private float currentSpawnInterval = 3f;
     [SerializeField]
-    private float currentTimeEachWave = 0f;
+    private float currentWaveCooldown = 0f;
+    [SerializeField]
+    private int currentWaveNumer = 1;
+    [SerializeField]
     private int currentEminem = 0;
-
-    private void Start()
-    {
-        currentSpawnInterval = 3f;
-        //StartCoroutine(StartWave());
-    }
 
     private void Update()
     {
-        if (currentTimeEachWave <= 0f)
+        if (currentWaveCooldown <= 0f)
         {
             if (currentSpawnInterval <= 0f)
             {
@@ -44,66 +39,33 @@ public class AreaSpawner : MonoBehaviour
                 currentSpawnInterval -= Time.deltaTime;
             }
 
-            if (currentEminem == maxEminem)
+            if (currentEminem ==  maxEminem)
             {
-                numberWaveSpawned++;
+                currentWaveCooldown = waveCooldown;
+                currentWaveNumer++;
                 currentEminem = 0;
-                currentTimeEachWave = timeEachWave;
             }
         }
         else
         {
-            currentTimeEachWave -= Time.deltaTime;
+            currentWaveCooldown -= Time.deltaTime;
         }
-
     }
-
-    //IEnumerator StartWave()
-    //{
-    //    while (true)
-    //    {
-    //        if (!isWaveRunning)
-    //        {
-    //            isWaveRunning = true;
-
-    //            while (currentEminem <= maxEminem)
-    //            {
-    //                if (currentSpawnInterval <= 0f)
-    //                {
-    //                    SpawnEminem();
-    //                    currentEminem++;
-    //                    currentSpawnInterval = spawnInterval;
-    //                }
-    //                else
-    //                {
-    //                    currentSpawnInterval -= Time.deltaTime;
-    //                }
-    //            }
-
-    //            currentEminem = 0;
-    //            numberWaveSpawned++;
-    //            yield return new WaitForSeconds(timeEachWave);
-
-    //            isWaveRunning = false;
-    //        }
-
-    //        yield return null;
-    //    }
-    //}
 
     void SpawnEminem()
     {
-        int randomIndex = Random.Range(0, spawnAreas.Length - 1);
-        Vector3 randomPosition = GetRandomPointInBounds(spawnAreas[randomIndex].bounds);
-        randomPosition.y = 0f;
-        Instantiate(eminemPrefab, randomPosition, Quaternion.identity, transform);
+        Vector3 spawnPos = GetRandomPointInBound(collider.bounds);
+        GameObject eminem = Instantiate(eminemPrefab, spawnPos, Quaternion.identity);
     }
 
-    Vector3 GetRandomPointInBounds(Bounds bounds)
+    Vector3 GetRandomPointInBound(Bounds bounds)
     {
         float x = Random.Range(bounds.min.x, bounds.max.x);
         float y = Random.Range(bounds.min.y, bounds.max.y);
         float z = Random.Range(bounds.min.z, bounds.max.z);
-        return new Vector3(x, y, z);
+        y = 0f;
+
+        return new Vector3 (x, y, z);
+
     }
 }

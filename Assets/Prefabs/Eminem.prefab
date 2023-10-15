@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6983182003184848750}
   - component: {fileID: 3389976108328498150}
   - component: {fileID: 7837201433673869159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 2667264837241176888}
   - component: {fileID: 4261714663114818322}
   - component: {fileID: 7986685163056056776}
-  - component: {fileID: 3628556995920719062}
-  m_Layer: 0
+  - component: {fileID: 6238676965450078534}
+  m_Layer: 7
   m_Name: Eminem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &3628556995920719062
+--- !u!114 &6238676965450078534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,6 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTarget: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 0
   speed: 2

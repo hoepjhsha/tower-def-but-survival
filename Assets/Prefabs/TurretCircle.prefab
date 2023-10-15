@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 762733435398518223}
   - component: {fileID: 7317098546238726202}
-  - component: {fileID: 8902273515350128610}
+  - component: {fileID: 3515142157364454827}
+  - component: {fileID: 4209625617668906648}
   m_Layer: 0
-  m_Name: TurretAim
+  m_Name: TurretCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +58,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 2.75, z: 1.5}
   m_Center: {x: 0, y: 1.4, z: 0}
---- !u!114 &8902273515350128610
+--- !u!114 &3515142157364454827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,13 +67,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2599997432565867998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593b9484485fce846a0dd60bc989f4f3, type: 3}
+  m_Script: {fileID: 11500000, guid: ef904ab3e226d7c4f81cfc70b5852e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 0}
+  radius: 10
+  isDragging: 0
+--- !u!114 &4209625617668906648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599997432565867998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbe389118f00044bb1559021a5fe14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 50
-  attackRange: 20
+  attackRange: 45
   attackCooldown: 1
-  bulletPrefab: {fileID: 2748919077202526186, guid: adf8798495ebd934d81b84d839ca47ac, type: 3}
+  bulletPrefab: {fileID: 2748919077202526186, guid: ac0b0a9007d1cf0468e9c8c00818d73e, type: 3}
 --- !u!1 &3583756156678238793
 GameObject:
   m_ObjectHideFlags: 0

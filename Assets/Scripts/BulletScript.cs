@@ -24,8 +24,9 @@ public class BulletScript : MonoBehaviour
     }
 
     void Update()
-    { 
-        Vector3 dir = new Vector3(turretPosition.x - target.position.x, 0f, turretPosition.z - target.position.z);
+    {
+        //Vector3 dir = new Vector3(turretPosition.x - target.position.x, 0f, turretPosition.z - target.position.z);
+        Vector3 dir = Vector3.right;
         dir.Normalize();
         //dir.y = turretPosition.y;
         float distanceThisFrame = speed * Time.deltaTime;
@@ -37,7 +38,7 @@ public class BulletScript : MonoBehaviour
 
     private void CheckBulletDespawn()
     {
-        if (Vector3.Magnitude(transform.position - turretPosition) >= 30)
+        if (Vector3.Magnitude(transform.position - turretPosition) >= 50)
         {
             Destroy(gameObject);
         }
